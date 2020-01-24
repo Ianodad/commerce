@@ -1,0 +1,10 @@
+.jumbotron {
+    width: 100%;
+    min-height: 200px;
+    height: 680vh;
+}
+
+.carouselImg {
+    max-height: 680px;
+    object-fit: cover;
+}

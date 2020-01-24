@@ -10,8 +10,12 @@ function index() {
 			<section style={{ backgroundColor: "grey" }}>
 				<CategoryPreview />
 			</section>
-			<ProductPreview />
-			<Features />
+			<section>
+				<ProductPreview />
+			</section>
+			<section style={{ "height": "200px" }} >
+				<Features/>
+			</section>
 		</div>
 	);
 }

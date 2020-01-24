@@ -4,6 +4,7 @@ function preview() {
 	return (
 		<div className='container'>
 			<div className='d-flex categoryPreview'>
+			SHOP NOW
 				<div className='card col-12  col-sm-3  preview my-4 mr-2'>
 					Preview 1
 				</div>
