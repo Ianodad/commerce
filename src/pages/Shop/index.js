@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
-
+import ShopNavbar from "../../components/ShopNavbar";
+import Products from "../../components/Products"
+import ShopHeader from "./ShopHeader"
 class index extends Component {
     render() {
         return (
             <div>
-                <h1>shop</h1>
+                <ShopNavbar />
+                <ShopHeader />
+                <Products />
             </div>
         )
     }
