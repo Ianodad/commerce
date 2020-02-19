@@ -1,4 +1,4 @@
-export const products = [
+const products = [
   {
     index: 0,
     isAvailable: true,
@@ -1198,6 +1198,7 @@ export const products = [
     ingredients: ["mollit", "occaecat", "non", "officia", "sint"],
     description:
       "non mollit deserunt aute tempor elit exercitation deserunt in in proident tempor laborum consectetur dolore",
+
     benefits: [
       "voluptate commodo Lorem",
       "Lorem quis et",
@@ -1229,6 +1230,7 @@ export const products = [
     ingredients: ["labore", "ex", "Lorem", "velit", "amet"],
     description:
       "amet cillum reprehenderit proident Lorem laborum sint ipsum laboris veniam sit sit fugiat tempor consequat",
+
     benefits: [
       "quis magna laboris",
       "enim aliqua proident",
@@ -1260,6 +1262,7 @@ export const products = [
     ingredients: ["adipisicing", "incididunt", "fugiat", "ipsum", "sit"],
     description:
       "mollit qui Lorem enim ex dolor minim ut enim occaecat dolore cillum officia Lorem nostrud",
+
     benefits: [
       "duis est deserunt",
       "irure consectetur qui",
@@ -1291,6 +1294,7 @@ export const products = [
     ingredients: ["fugiat", "pariatur", "magna", "tempor", "excepteur"],
     description:
       "ullamco commodo veniam reprehenderit elit qui pariatur Lorem veniam tempor ea laboris duis non eu",
+
     benefits: [
       "ullamco est velit",
       "Lorem magna ea",

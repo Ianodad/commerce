@@ -16,7 +16,7 @@ function preview() {
 				<div className='card col-5  col-sm-3 preview my-4 mx-2' id="Oils">
 					Preview 3
 				</div>
-				<div className='col-5 col-sm-3  preview my-4'>
+				<div className='col-5 col-sm-3  preview my-4' >
 					<div className='d-flex flex-column'>
 						<div className=' card  previewh  mb-2' id="Tea">Tea</div>
 						<div className='card  previewh  mt-2' id="Remedies">Remedies</div>

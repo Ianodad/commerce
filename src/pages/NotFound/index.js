@@ -1,13 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
-class Index extends Component {
-    render() {
-        return (
-            <div>
-                Sorry not found
-            </div>
-        )
-    }
+class index extends Component {
+  render() {
+    return <div>Sorry not found</div>;
+  }
 }
 
-export default Index
+export default index;

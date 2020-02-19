@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
-import Logo from './Logo'
-import Pages from './Pages'
-import Info from "./Info"
+import React, { Component } from "react";
+import Logo from "./Logo";
+import Pages from "./Pages";
+import Info from "./Info";
 
-import "./Navbar.css"
+import "./Navbar.css";
 
-class Index extends Component {
+class index extends Component {
   render() {
     return (
       <div className="container">
@@ -15,8 +15,8 @@ class Index extends Component {
           <Info />
         </nav>
       </div>
-    )
+    );
   }
 }
 
-export default Index
+export default index;

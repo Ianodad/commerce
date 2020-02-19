@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import Preview from "./Preview";
+import Jumbotron from "./Jumbotron";
+import "./header.css";
 
 class index extends Component {
   render() {
     return (
       <div>
-        <Preview />
+        <Jumbotron />
       </div>
     );
   }

@@ -1,14 +1,14 @@
-import React, { Component } from 'react'
-import Navbar from './Navbar'
+import React, { Component } from "react";
+import Navbar from "./Navbar";
 
 class index extends Component {
-    render() {
-        return (
-            <div>
-                <Navbar />
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <Navbar />
+      </div>
+    );
+  }
 }
 
-export default index
+export default index;
