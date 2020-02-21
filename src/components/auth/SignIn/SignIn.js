@@ -1,4 +1,5 @@
 import React from 'react'
+import Social from './Social'
 
 function SignIn() {
     return (
@@ -26,7 +27,7 @@ function SignIn() {
                     <div className="mx-auto col-sm-10">
                       <div className="checkbox form-control form-control-sm text-center small">
                         <label className>
-                          <input type="checkbox" className /> remember me</label>
+                          <input type="checkbox" className="" /> remember me</label>
                       </div>
                     </div>
                   </div>
@@ -36,11 +37,12 @@ function SignIn() {
                     </div>
                   </div>
                 </form>
-                <ul className="list-inline text-center">
+                {/* <ul className="list-inline text-center">
                   <li className="list-inline-item px-3"><a href title="Twitter"><i className="display-3 ion-social-twitter-outline" /></a>&nbsp; </li>
                   <li className="list-inline-item px-3"><a href title="Google"><i className="display-3 ion-social-googleplus-outline" /></a>&nbsp; </li>
                   <li className="list-inline-item px-3"><a href title="Facebook"><i className="display-3 ion-social-facebook-outline" /></a></li>
-                </ul>
+                </ul> */}
+                <Social/>
               </div>
             </div>
           </div>

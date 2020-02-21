@@ -1,5 +1,6 @@
-import { FETCH_PRODUCTS } from './types'
+import { FETCH_PRODUCTS, FETCH_CATEGORIES } from './types'
 import {getProducts} from "../service/products"
+import  { getCategories } from "../service/category"
 
 
 
@@ -10,4 +11,15 @@ export const fetchProducts = () => async dispatch => {
         type:  FETCH_PRODUCTS,
         payload : response
     })
+}
+
+export const fetchCategories = () => async dispatch => {
+    const response = await getCategories()
+
+
+    dispatch ( {
+        type: FETCH_CATEGORIES,
+        payload: response
+    })
+
 }
