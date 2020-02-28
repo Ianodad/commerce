@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Navbar from "./Navbar";
 
-import {fetchCategories } from "../../actions";
+import {fetchCategories, setCategory} from "../../actions";
 import { connect } from "react-redux";
 
 
@@ -11,17 +11,28 @@ class index extends Component {
     this.props.fetchCategories()
   }
 
+  // componentWillReceiveProps(newProps) {
+  //   console.log(props)
+  // }
+  handleCategorySelect = (category) => {
+    console.log(category)
+		this.props.setCategory(category)
+	};
+  
   render() {
+    const { categories } = this.props
     return (
       <div>
-        <Navbar categories={this.props.categories} />
+        <Navbar categories={categories} onCategorySelect={this.handleCategorySelect} />
       </div>
     );
   }
 }
 
 const mapStateToProps = state => {
-  return { categories: state.categories };
+  return { categories: state.category.categories,
+          currentCategory : state.currentCategory  
+  };
 };
 
-export default connect(mapStateToProps, { fetchCategories })(index);
+export default connect(mapStateToProps, { fetchCategories, setCategory })(index);

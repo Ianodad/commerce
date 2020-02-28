@@ -1,4 +1,4 @@
-import { FETCH_PRODUCTS, FETCH_CATEGORIES } from './types'
+import { FETCH_PRODUCTS, FETCH_CATEGORIES, CURRENT_PAGE, SET_CURRENT_PAGE, SET_CATEGORY} from './types'
 import {getProducts} from "../service/products"
 import  { getCategories } from "../service/category"
 
@@ -23,3 +23,19 @@ export const fetchCategories = () => async dispatch => {
     })
 
 }
+
+
+export const currentPage = () => ({
+    type : CURRENT_PAGE
+})
+
+export const setCurrentPage = (page) => ({
+    type: SET_CURRENT_PAGE,
+    payload: page
+})
+
+export const setCategory = (category) => ({
+    type: SET_CATEGORY,
+    payload: category
+})
+

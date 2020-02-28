@@ -2,7 +2,8 @@ import React from 'react';
 import { NavLink } from "react-router-dom";
 
 
-function Navbar({categories}) {
+function Navbar({categories, onCategorySelect}) {
+
     return (
         <div>
             <nav className="navbar navbar-default">
@@ -10,7 +11,7 @@ function Navbar({categories}) {
                     <ul className="d-flex">
                     {categories.map((category, key) => {
                     return (
-                        <NavLink className="nav-item nav-link active" to="#">{category.name}</NavLink>
+                        <NavLink onClick={() => onCategorySelect(category.name)} className="nav-item nav-link active" to="#">{category.name}</NavLink>
                     )})}
                     </ul>
                 </div>

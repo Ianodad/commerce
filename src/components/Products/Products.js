@@ -1,7 +1,6 @@
 import React from 'react'
 
 function Products({products}) {
-  {   console.log(products)}
   return (
    <div className="container px-sm-1 py-5 mx-auto product">
     <div className="row">
@@ -26,7 +25,4 @@ function Products({products}) {
   )
 }
 
-export default Products
-// {products.map((product, key) => {
-            
-//           })}
+export default Products;
