@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import Products from "./Products";
 import "./Products.css";
 
-import { fetchProducts, setCurrentPage } from "../../actions";
 import { connect } from "react-redux";
 import Pagination from "../common/Pagination";
 import { paginate } from '../../Utilities/Paginate';
+
+import { fetchProducts, setCurrentPage } from "../../actions";
 
 
 class index extends Component {

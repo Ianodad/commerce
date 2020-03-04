@@ -1,7 +1,6 @@
-import { FETCH_PRODUCTS, FETCH_CATEGORIES, CURRENT_PAGE, SET_CURRENT_PAGE, SET_CATEGORY} from './types'
-import {getProducts} from "../service/products"
+import { FETCH_PRODUCTS, FETCH_CATEGORIES, CURRENT_PAGE, SET_CURRENT_PAGE, SET_CATEGORY, FETCH_PRODUCT} from './types'
+import {getProducts, getProduct} from "../service/products"
 import  { getCategories } from "../service/category"
-
 
 
 export const fetchProducts = () => async dispatch => {
@@ -10,6 +9,15 @@ export const fetchProducts = () => async dispatch => {
         dispatch({
         type:  FETCH_PRODUCTS,
         payload : response
+    })
+}
+
+export const fetchProduct = (id) => async dispatch => {
+    const response = await getProduct(id)
+
+    dispatch ( {
+        type: FETCH_PRODUCT,
+        payload: response
     })
 }
 
@@ -25,9 +33,11 @@ export const fetchCategories = () => async dispatch => {
 }
 
 
+
 export const currentPage = () => ({
     type : CURRENT_PAGE
 })
+
 
 export const setCurrentPage = (page) => ({
     type: SET_CURRENT_PAGE,

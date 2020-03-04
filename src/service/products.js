@@ -1558,3 +1558,7 @@ const products = [
 export function getProducts() {
   return products.filter(product => product);
 }
+
+export function getProduct(index) {
+  return  products.find(product => product.index == index )
+}

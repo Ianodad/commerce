@@ -5,6 +5,7 @@ class index extends Component {
     render() {
         return (
             <div className="container-fluid">
+                <h2>CART</h2>
                 <CartView/>
             </div>
         )
