@@ -36,8 +36,9 @@ export const fetchCategories = () => async dispatch => {
 
 }
 
-
+// ACTIONS DEALING WITH PAGINATION 
 // get current page
+
 export const currentPage = () => ({
     type : CURRENT_PAGE
 })
@@ -48,11 +49,26 @@ export const setCurrentPage = (page) => ({
     payload: page
 })
 
+//    END //
+
+// ACTION DEALING WITH SELECTION CATEGORY //
 // set category
 export const setCategory = (category) => ({
     type: SET_CATEGORY,
     payload: category
 })
+
+// CART ACTIONS ///
+
+export const initiateCart = () => async dispatch => {
+    const response = localStorage.getItem('cartN')
+     
+
+    dispatch ( {
+        type: INITIATE_CART,
+        payload:  response
+    })
+}
 
 
 // add to cart
@@ -65,9 +81,3 @@ export const setCategory = (category) => ({
  export const populateCart = () => ({
      type: POPULATE_CART
 })
-
-// set cart from localDrive
- export const initiateCart = () => ({
-    type: INITIATE_CART,
-    payload:  "payload"
- })
