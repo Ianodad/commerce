@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 function Products({products}) {
   return (
@@ -14,7 +15,9 @@ function Products({products}) {
           <div className="product-pic"> <img className="pic1" src="https://i.imgur.com/fP3NOTX.png" /> </div> <small className="category">Backpacks</small>
           <h5 className="product-name">{product.name}</h5>
           <div className="row px-3 justify-content-between">
-            <p className="price">$79.<span className="sm-text">50</span></p>
+            <p className="price">{product.price}<span className="sm-text">50</span></p>
+            <Link to={`/shop/${product.index}`} type="button" class="btn btn-primary"> Basic</Link>
+            <button type="button" class="btn btn-warning">Add To Cart</button>
             <div className="stars"> <span className="fa fa-star star-active" /> <span className="fa fa-star star-active" /> <span className="fa fa-star star-active" /> <span className="fa fa-star-o" /> <span className="fa fa-star-o" /> </div>
           </div>
         </div>
