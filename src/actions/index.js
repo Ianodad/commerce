@@ -1,6 +1,8 @@
 import { FETCH_PRODUCTS, FETCH_CATEGORIES, CURRENT_PAGE, SET_CURRENT_PAGE, SET_CATEGORY, FETCH_PRODUCT, ADD_TO_CART, POPULATE_CART,INITIATE_CART } from './types'
 import {getProducts, getProduct} from "../service/products"
 import  { getCategories } from "../service/category"
+import _ from 'lodash';
+
 
 
 // fetch all products 
@@ -60,24 +62,64 @@ export const setCategory = (category) => ({
 
 // CART ACTIONS ///
 
-export const initiateCart = () => async dispatch => {
-    const response = localStorage.getItem('cartN')
-     
+export const initiateCart = () => {
 
-    dispatch ( {
+    const response = JSON.parse(localStorage.getItem('cartN'))
+    console.log(response)
+
+    return {
+
         type: INITIATE_CART,
-        payload:  response
-    })
+        payload: response
+    }
 }
 
 
 // add to cart
- export const addToCart = (product) => ({
-    type: ADD_TO_CART,
-    payload: product
- })
+ export const addToCart = (productId) => async (dispatch, getState) => {
+        let cart = JSON.parse(localStorage.getItem('cartN')) || []
+        
+        const productCart = _.find(cart, {index:productId})
+        
+        if (productCart) {
+            
+            cart.forEach(product => {
+                if (product.index === productId) {
+                    product.prices.quantity ++
+                    product.prices.price =  product.price
+                    product.prices.subTotal =  product.price * product.prices.quantity
+                }
+            })
+
+        } else {
+            const product =_.find(getState().product.products, {index:productId})
+            const cartUpdate = {
+                prices: {
+                    quantity : 1,
+                    price : product.price,
+                    subTotal: product.price  
+                    }   
+             }
+            const merge =  await _.merge({}, product, cartUpdate)
+            console.log(merge)
+            cart.push(merge)
+        }
+        console.log(cart)
+        localStorage.setItem('cartN', JSON.stringify(cart))
+
+     dispatch ( {
+         type: ADD_TO_CART,
+         payload : cart
+     })
+
+}
+
+export const removeFromCart = (productId) => (dispatch) => {
+           let cart = JSON.parse(localStorage.getItem('cartN')) 
+           const filtered = cart.filter((product => product.id !== productId))
+           console.log(filtered)
+
+}
  
- // populate cart
- export const populateCart = () => ({
-     type: POPULATE_CART
-})
+
+

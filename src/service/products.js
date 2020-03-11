@@ -9,7 +9,7 @@ const products = [
     quantity: 1,
     category: "Herb and Spices",
     prices: {
-      price: "This is price",
+      price: "814.0",
       quantity: "",
       subTotal: "total price plus quantity",
       sale: "for sale purpose",

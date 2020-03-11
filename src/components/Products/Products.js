@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-function Products({products}) {
+function Products({products, onAddToCart}) {
   return (
    <div className="container px-sm-1 py-5 mx-auto product">
     <div className="row">
@@ -17,7 +17,7 @@ function Products({products}) {
           <div className="row px-3 justify-content-between">
             <p className="price">{product.price}<span className="sm-text">50</span></p>
             <Link to={`/shop/${product.index}`} type="button" class="btn btn-primary"> Basic</Link>
-            <button type="button" class="btn btn-warning">Add To Cart</button>
+            <button type="button" class="btn btn-warning" onClick={() => onAddToCart(product.index)}>Add To Cart</button>
             <div className="stars"> <span className="fa fa-star star-active" /> <span className="fa fa-star star-active" /> <span className="fa fa-star star-active" /> <span className="fa fa-star-o" /> <span className="fa fa-star-o" /> </div>
           </div>
         </div>

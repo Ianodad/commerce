@@ -6,18 +6,23 @@ import { connect } from "react-redux";
 import Pagination from "../common/Pagination";
 import { paginate } from '../../Utilities/Paginate';
 
-import { fetchProducts, setCurrentPage } from "../../actions";
+import { fetchProducts, setCurrentPage, addToCart,  initiateCart} from "../../actions";
 
 
 class index extends Component {
-  componentDidMount() {
-    this.props.fetchProducts();
+  componentDidMount = async () => {
+   await this.props.fetchProducts();
+    console.log(await this.props.initiateCart())
   }
 
   handlePageChange = (page) => {
 		this.props.setCurrentPage(page)
 	};  
 
+  addToCart = (id) => {
+    this.props.addToCart(id)
+
+  }
 
   render() {
     const { pageSize, currentPage, currentCategory, products: allProducts } = this.props
@@ -41,7 +46,7 @@ class index extends Component {
     return (
       <div className="container-fluid">
 
-        <Products products={selectProducts}/>
+        <Products products={selectProducts} onAddToCart={this.addToCart}/>
         <Pagination itemsCount={count} pageSize={pageSize} currentPage={currentPage} onPageChange={this.handlePageChange}/> 
       </div>
         );
@@ -53,4 +58,4 @@ const mapStateToProps = state => {
 
 };
 
-export default connect(mapStateToProps, { fetchProducts, setCurrentPage })(index);
+export default connect(mapStateToProps, { fetchProducts, setCurrentPage, addToCart, initiateCart  })(index);

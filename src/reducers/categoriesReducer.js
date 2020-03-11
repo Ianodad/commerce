@@ -1,5 +1,5 @@
 
-import _ from 'lodash';
+// import _ from 'lodash';
 import {  FETCH_CATEGORIES, SET_CATEGORY} from '../actions/types'
 
 
