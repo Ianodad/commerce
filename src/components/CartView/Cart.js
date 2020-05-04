@@ -38,7 +38,7 @@ const  Cart = ({cart, deleteProduct}) => {
                           <div className="p-2">
                             <img src="https://res.cloudinary.com/mhmd/image/upload/v1556670479/product-1_zrifhn.jpg" alt="" width={70} className="img-fluid rounded shadow-sm" />
                             <div className="ml-3 d-inline-block align-middle">
-                              <h5 className="mb-0"> <a href="#" className="text-dark d-inline-block align-middle">{product.name}</a></h5><span className="text-muted font-weight-normal font-italic d-block" onClick={() => deleteProduct(product.index)}>Delete</span>
+                              <h5 className="mb-0"> <a href="#" className="text-dark d-inline-block align-middle">{product.name}</a></h5><span className="text-muted font-weight-normal font-italic d-block" onClick={() => deleteProduct(product.productId)}>Delete</span>
                             </div>
                           </div>
                         </th>

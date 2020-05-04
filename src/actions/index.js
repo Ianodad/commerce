@@ -130,13 +130,12 @@ export const initiateCart = () => {
 
 // this removes product  from cart 
 export const removeFromCart = (productId) => (dispatch) => {
-        // console.log(productId)
+        console.log(productId)
         let cart = JSON.parse(localStorage.getItem('cartN')) 
-        const filtered = cart.filter((product => product.index !== productId))
+        const filtered = cart.filter((product => product.productId !== productId))
         console.log(filtered)
         // return filtered products to local        
         localStorage.setItem('cartN', JSON.stringify(filtered))
-
 
         dispatch ({
            type: REMOVE_FROM_CART,
