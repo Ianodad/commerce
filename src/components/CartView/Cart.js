@@ -43,8 +43,8 @@ const  Cart = ({cart, deleteProduct}) => {
                           </div>
                         </th>
                         <td className="border-0 align-middle"><strong>{product.price}</strong></td>
-                        <td className="border-0 align-middle"><strong>{product.prices.quantity}</strong></td>
-                        <td className="border-0 align-middle"><a href="#" className="text-dark"><i className="fa fa-trash" />{product.prices.subTotal}</a></td>
+                        <td className="border-0 align-middle"><strong>{product.quantity}</strong></td>
+                        <td className="border-0 align-middle"><a href="#" className="text-dark"><i className="fa fa-trash" />{product.subTotal}</a></td>
                       </tr>
                       )
                     })}

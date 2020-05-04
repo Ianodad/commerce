@@ -83,17 +83,18 @@ export const initiateCart = () => {
         let cart = JSON.parse(localStorage.getItem('cartN')) || []
 
         // find product by Id 
-        const productCart = _.find(cart, {index:productId})
+        const productCart = _.find(cart, {productId:productId})
         
         // check if product exists
         if (productCart) {
             // loop thorough list of  product from initiated cart
             cart.forEach(product => {
+                console.log(product)
                 // get exact product id then add to quantity price and subtotal base on quantity
-                if (product.index === productId) {
-                    product.prices.quantity ++
-                    product.prices.price =  product.price
-                    product.prices.subTotal =  product.price * product.prices.quantity
+                if (product.productId === productId) {
+                    product.quantity ++
+                    // product.price =  product.price
+                    product.subTotal =  product.price * product.quantity
                 }
             })
 
@@ -102,18 +103,19 @@ export const initiateCart = () => {
             const product =_.find(getState().product.products, {index:productId})
             
             // add new object of prices with properties of  quantity, price and sub
-            const cartUpdate = {
-                prices: {
+            const cartProduct = {
+                    productId: product.index,
+                    image: product.image,
+                    name: product.name,
                     quantity : 1,
                     price : product.price,
                     subTotal: product.price  
-                    }   
              }
              // add prices to the selected product
-            const merge =  await _.merge({}, product, cartUpdate)
+            // const merge =  await _.merge({}, product, cartUpdate)
             // console.log(merge)
             // push to cart
-            cart.push(merge)
+            cart.push(cartProduct)
         }
         console.log(cart)
         // set cart to the localStorage
@@ -150,7 +152,7 @@ export const cartReceipt = () => {
     // get total of the subtotal of all the products
     const subTotal = _.sumBy(response, function(price)
     {
-        return parseInt(price.prices.subTotal)   
+        return parseInt(price.subTotal)   
     })
 
     // shipping cost 
