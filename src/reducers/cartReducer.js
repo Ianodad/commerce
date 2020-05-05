@@ -1,4 +1,4 @@
-import {  ADD_TO_CART , REMOVE_FROM_CART, INITIATE_CART, INITIATE_RECEIPT} from '../actions/types'
+import {  ADD_TO_CART , REMOVE_FROM_CART, INITIATE_CART, INITIATE_RECEIPT, FETCH_CART} from '../actions/types'
 
 const initialState = {
    cart: []
@@ -22,6 +22,10 @@ export default (state=initialState , action) =>{
         case INITIATE_RECEIPT:
             return {
                 ...state, receipt : action.payload
+            }
+        case FETCH_CART:
+            return {
+                ...state, fetchedCart : action.payload
             }
         default:
       return state;

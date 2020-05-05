@@ -1,12 +1,12 @@
-import { FETCH_PRODUCTS, FETCH_CATEGORIES, CURRENT_PAGE, SET_CURRENT_PAGE, SET_CATEGORY, FETCH_PRODUCT, ADD_TO_CART, REMOVE_FROM_CART,INITIATE_CART, INITIATE_RECEIPT } from './types'
+import { FETCH_PRODUCTS, FETCH_CATEGORIES, CURRENT_PAGE, SET_CURRENT_PAGE, SET_CATEGORY, FETCH_PRODUCT, ADD_TO_CART, REMOVE_FROM_CART,INITIATE_CART, INITIATE_RECEIPT, FETCH_CART, POST_CART } from './types'
 import {getProducts, getProduct} from "../service/products"
 import  { getCategories } from "../service/category"
+import { getCart, postCart } from "../service/cartService"
 import _ from 'lodash';
 
 
 
-// fetch all products 
-
+//fetchProducts fetches all products 
 export const fetchProducts = () => async dispatch => {
         const response = await getProducts()
         
@@ -70,6 +70,7 @@ export const initiateCart = () => {
     const response = JSON.parse(localStorage.getItem('cartN'))
     console.log(response)
 
+    postCart()
     return {
 
         type: INITIATE_CART,
@@ -89,7 +90,6 @@ export const initiateCart = () => {
         if (productCart) {
             // loop thorough list of  product from initiated cart
             cart.forEach(product => {
-                console.log(product)
                 // get exact product id then add to quantity price and subtotal base on quantity
                 if (product.productId === productId) {
                     product.quantity ++
@@ -106,7 +106,8 @@ export const initiateCart = () => {
             const cartProduct = {
                     productId: product.index,
                     image: product.image,
-                    name: product.name,
+                    productName: product.name,
+                    category: product.category,
                     quantity : 1,
                     price : product.price,
                     subTotal: product.price  
@@ -117,9 +118,10 @@ export const initiateCart = () => {
             // push to cart
             cart.push(cartProduct)
         }
-        console.log(cart)
         // set cart to the localStorage
         localStorage.setItem('cartN', JSON.stringify(cart))
+
+        postCart()
 
      dispatch ( {
          type: ADD_TO_CART,
@@ -128,7 +130,7 @@ export const initiateCart = () => {
 
 }
 
-// this removes product  from cart 
+// removeFormCart this removes product  from cart 
 export const removeFromCart = (productId) => (dispatch) => {
         console.log(productId)
         let cart = JSON.parse(localStorage.getItem('cartN')) 
@@ -181,4 +183,25 @@ export const cartReceipt = () => {
 }
  
 
+export const fetchCart = () => async dispatch => {
+        const response = await getCart()
+        
+        dispatch({
+        type:  FETCH_CART,
+        payload : response
+    })
+}
 
+export const postingCart = () => async (dispatch, getState) => {
+        
+        const cart = await getState().cart
+        console.log(cart)
+
+        const response = await postCart(cart)
+
+        console.log(response)    
+
+        dispatch({
+        type: POST_CART
+    })
+}

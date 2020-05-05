@@ -1,6 +1,9 @@
 import { Route, Switch, Redirect } from "react-router-dom";
 import React, { Component } from "react";
+import { ToastContainer } from "react-toastify";
 
+
+// Page Component 
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import Cart from "./pages/Cart"
@@ -11,10 +14,14 @@ import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
+import "react-toastify/dist/ReactToastify.css";
+
+
 class App extends Component {
 	render() {
 		return (
 			<div>
+				<ToastContainer />
 				<Navbar />
 				<Switch>
 					<Route path='/' exact component={Home} />

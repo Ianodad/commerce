@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import Cart from "./Cart"
 import CartReceipt from './CartReceipt'
-import { initiateCart, removeFromCart, cartReceipt } from "../../actions"
+import { initiateCart, removeFromCart, cartReceipt, fetchCart, postingCart} from "../../actions"
 import EmptyCart from './EmptyCart';
 
 
@@ -14,6 +14,8 @@ class index extends Component {
     componentDidMount() {
     this.props.initiateCart();
     this.props.cartReceipt();
+    this.props.fetchCart();
+    this.props.postingCart();
   }
 
   // delete product
@@ -44,5 +46,5 @@ const mapStateToProps = (state, ownProps) => {
 
 export default connect(
   mapStateToProps, 
-  {initiateCart, removeFromCart, cartReceipt}
+  {initiateCart, removeFromCart, cartReceipt, fetchCart, postingCart}
 )(index);
