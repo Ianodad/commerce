@@ -2,7 +2,6 @@ import {Router, Route, Switch, Redirect } from "react-router-dom";
 import React, { Component, useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 
-import { history } from './helpers/history';
 
 
 

@@ -2,9 +2,11 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import Cart from "./Cart"
 import CartReceipt from './CartReceipt'
-import { initiateCart, removeFromCart, cartReceipt, fetchCart, postingCart} from "../../actions"
+import { cartActions} from "../../_actions"
 import EmptyCart from './EmptyCart';
 
+
+const { initiateCart, removeFromCart, cartReceipt, fetchCart, postingCart } = cartActions
 
 class index extends Component {
 

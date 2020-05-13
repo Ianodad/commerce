@@ -1,6 +1,6 @@
 
 // import _ from 'lodash';
-import {  FETCH_CATEGORIES, SET_CATEGORY} from '../actions/types'
+import {  FETCH_CATEGORIES, SET_CATEGORY} from '../_actions/types'
 
 
 const initialState = {

@@ -4,8 +4,7 @@ import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
 import Joi from "joi-browser";
 import Form from '../../common/Form';
-import { login } from "../../../actions"
-import { history } from '../../../helpers/history';
+import { login } from "../../../_actions"
 
 import Social from './Social'
 
