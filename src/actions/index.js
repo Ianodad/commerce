@@ -1,8 +1,11 @@
-import { FETCH_PRODUCTS, FETCH_CATEGORIES, CURRENT_PAGE, SET_CURRENT_PAGE, SET_CATEGORY, FETCH_PRODUCT, ADD_TO_CART, REMOVE_FROM_CART,INITIATE_CART, INITIATE_RECEIPT, FETCH_CART, POST_CART } from './types'
+import { FETCH_PRODUCTS, FETCH_CATEGORIES, CURRENT_PAGE, SET_CURRENT_PAGE, SET_CATEGORY, FETCH_PRODUCT, ADD_TO_CART, REMOVE_FROM_CART,INITIATE_CART, INITIATE_RECEIPT, FETCH_CART, POST_CART,  LOGIN, ERROR } from './types'
 import {getProducts, getProduct} from "../service/products"
 import  { getCategories } from "../service/category"
 import { getCart, postCart } from "../service/cartService"
+import { postLogin } from "../service/authService";
+import { history } from '../helpers/history';
 import _ from 'lodash';
+
 
 
 
@@ -174,7 +177,6 @@ export const cartReceipt = () => {
     // console.log(_(response).map("prices.subTotal").sum())
     // console.log(response)
 
-
     return {
                 
         type: INITIATE_RECEIPT,
@@ -204,4 +206,32 @@ export const postingCart = () => async (dispatch, getState) => {
         dispatch({
         type: POST_CART
     })
+}
+
+export const login = (credentials) => async (dispatch) => {
+
+    const tokenKey = ""
+
+    try {
+        const response = await postLogin(credentials)
+        console.log(response)
+        console.log(response.headers["x-auth-token"])
+        localStorage.setItem(tokenKey, response.headers["x-auth-token"]);
+        // history.push('/');
+        dispatch({
+            type: LOGIN,
+            payload: true
+        })
+    } catch (ex) {
+        if (ex.response && ex.response.status === 400) {
+            console.log(ex.response.data)
+            dispatch({
+                type: ERROR,
+                payload: ex.response.data
+            })
+            
+        }
+    }
+
+
 }

@@ -25,7 +25,7 @@ export const postCart = async (data) => {
             //    console.log(receipt)
                return http.post(`${apiEndPoint}/${newCart.userId}`, newCart);
                
-            } catch (ex) {
+         } catch (ex) {
 
                 return null
             }

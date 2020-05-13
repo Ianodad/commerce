@@ -9,7 +9,7 @@ class Form extends Component {
     if (touched && error) {
       return (
         <div className="ui error message">
-          <div className="header">{error}</div>
+          <div className="header text-danger">{error}</div>
         </div>
       );
     }

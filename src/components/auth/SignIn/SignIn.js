@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import { Field, reduxForm } from 'redux-form';
+import { Redirect } from 'react-router-dom'
+import { connect } from 'react-redux';
 import Joi from "joi-browser";
 import Form from '../../common/Form';
+import { login } from "../../../actions"
+import { history } from '../../../helpers/history';
 
 import Social from './Social'
 
@@ -10,12 +14,28 @@ import Social from './Social'
 
 class SignIn extends Form {
 
+  constructor(props){
+    super(props);
+
+    console.log(props)
+  }
+
+
   onSubmit = formValues => {
-    console.log(formValues)
-    // console.log(this.props.onSubmit(formValues));
+    this.props.login(formValues)
   };
 
+  
+  componentWillUpdate(nextProps, nextState) {
+    if (nextProps.auth){
+      window.location = "/"
+    }
+  }
+
+
   render() {
+    const { handleSubmit, pristine,  submitting, error } = this.props
+
     return (
         <div className="container">
           <h2 className="text-center pb-2" />
@@ -24,7 +44,8 @@ class SignIn extends Form {
             <div className="card h-100">
               <div className="card-body">
                 <h2 className="text-center mb-4">SIGN IN</h2>
-                <form className="py-2" onSubmit={this.props.handleSubmit(this.onSubmit)} role="form">
+                <p className="text-center">{error}</p>
+                <form className="py-2" onSubmit={handleSubmit(this.onSubmit)} role="form">
                 <Field name="email" component={this.renderInput} id="inputEmailForm" label="email" />
                 <Field name="password" component={this.renderInput} id="inputPasswordForm" label="password" />
                   {/* <div className="form-group">
@@ -37,7 +58,7 @@ class SignIn extends Form {
                   </div> */}
                   <div className="form-group">
                     <div className="mx-auto col-sm-10 pb-3 pt-2">
-                      <button type="submit" className="btn btn-outline-secondary btn-lg btn-block">Sign-in</button>
+                      <button type="submit" className="btn btn-outline-secondary btn-lg btn-block" disabled={submitting | pristine}>Sign-in</button>
                     </div>
                   </div>
                 </form>
@@ -56,13 +77,15 @@ class SignIn extends Form {
 
 const validate = (formValues) => {
 
-
+  console.log(formValues)
   const schema = {
     email: Joi.string()
       .required()
+      .email()
       .label("Email"),
     password: Joi.string()
       .required()
+      .min(8)
       .label("Password")
   };
 
@@ -84,7 +107,12 @@ const validate = (formValues) => {
 
 
 
+const mapStateToProps = (state, ownProps) => {
+  return { error : state.login.error, auth:state.login.auth};
+};
+
+
 export default reduxForm({
   form: "signIn",
   validate
-}) (SignIn)
+}) (connect( mapStateToProps, {login})(SignIn))

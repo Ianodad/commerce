@@ -1,6 +1,9 @@
-import { Route, Switch, Redirect } from "react-router-dom";
-import React, { Component } from "react";
+import {Router, Route, Switch, Redirect } from "react-router-dom";
+import React, { Component, useEffect } from "react";
 import { ToastContainer } from "react-toastify";
+
+import { history } from './helpers/history';
+
 
 
 // Page Component 
@@ -18,11 +21,22 @@ import "react-toastify/dist/ReactToastify.css";
 
 
 class App extends Component {
+
+
+	// constructor(props) {
+    //     super(props);
+
+    //     history.listen((location, action) => {
+    //         // clear alert on location change
+    //         this.props.clearAlerts();
+    //     });
+    // }
 	render() {
 		return (
 			<div>
 				<ToastContainer />
 				<Navbar />
+				{/* <Router history={history}> */}
 				<Switch>
 					<Route path='/' exact component={Home} />
 					<Route exact path='/shop' component={Shop} />
@@ -34,6 +48,7 @@ class App extends Component {
 					<Route path='/notFound' component={NotFound} />
 					<Redirect to='/notFound' />
 				</Switch>
+				{/* </Router> */}
 				<Footer />
 			</div>
 		);
