@@ -4,11 +4,11 @@ import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
 import Joi from "joi-browser";
 import Form from '../../common/Form';
-import { login } from "../../../_actions"
+import { userAction} from "../../../_actions"
 
 import Social from './Social'
 
-
+const {login} = userAction
 
 
 class SignIn extends Form {

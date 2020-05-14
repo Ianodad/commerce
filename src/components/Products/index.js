@@ -4,7 +4,7 @@ import "./Products.css";
 
 import { connect } from "react-redux";
 import Pagination from "../common/Pagination";
-import { paginate } from "../../Utilities/Paginate";
+import { paginate } from "../../_helpers/Paginate";
 
 import { productActions, cartActions} from "../../_actions";
 

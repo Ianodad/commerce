@@ -5,7 +5,7 @@ import React, { Component } from 'react'
 
 class Form extends Component {
 
-  renderError({ error, touched }) {
+  renderError({ error, touched, asyncValidating }) {
     if (touched && error) {
       return (
         <div className="ui error message">
@@ -21,7 +21,7 @@ class Form extends Component {
     return (
     <div className={className}>
       <label htmlFor={id} className="sr-only form-control-label">{label}</label>
-      <div className="mx-auto col-sm-10">
+      <div className={"mx-auto col-sm-10" + (meta.asyncValidating ? 'async-validating' : '')}>
         <input {...input} type="text" className="form-control" id={id} placeholder={label} required />
         {this.renderError(meta)}
        </div>

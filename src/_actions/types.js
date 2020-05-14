@@ -14,3 +14,10 @@ export const POST_CART = "POST_CART";
 
 export const LOGIN_SUCCESS="LOGIN_SUCCESS";
 export const LOGIN_ERROR = "LOGIN_ERROR"
+export const LOGOUT = "LOGOUT"
+
+export const FETCH_EMAILS = "FETCH_EMAILS"
+
+export const REGISTER_USER = "REGISTER_USER"
+export const REGISTER_SUCCESS = "REGISTER_SUCCESS"
+export const REGISTER_FAILURE = "REGISTER_FAILURE"
