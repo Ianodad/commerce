@@ -16,7 +16,7 @@ import { getCategories } from "../_services/category";
 
 const fetchProducts = () => async (dispatch) => {
     const response = await getProducts();
-    
+
     dispatch({
         type: FETCH_PRODUCTS,
         payload: response,
@@ -26,7 +26,7 @@ const fetchProducts = () => async (dispatch) => {
 // fetch product with id
 const fetchProduct = (id) => async (dispatch) => {
     const response = await getProduct(id);
-    
+
     dispatch({
     type: FETCH_PRODUCT,
     payload: response,
@@ -36,7 +36,7 @@ const fetchProduct = (id) => async (dispatch) => {
 // fetch categories
 const fetchCategories = () => async (dispatch) => {
     const response = await getCategories();
-    
+
     dispatch({
         type: FETCH_CATEGORIES,
         payload: response,
